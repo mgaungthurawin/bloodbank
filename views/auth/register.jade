@@ -1,0 +1,43 @@
+include layout/header
+  body.hold-transition.register-page
+    .register-box
+      .register-logo
+        a(href='/')
+          b Admin
+          | LTE
+      .register-box-body
+        p.login-box-msg Register a new membership
+        form(action='/register', method='post')
+          .form-group.has-feedback
+            input.form-control(type='text', name="name", id="name", placeholder='Full name')
+            span.glyphicon.glyphicon-user.form-control-feedback
+          .form-group.has-feedback
+            input.form-control(type='email', name="email", id="email", placeholder='Email')
+            span.glyphicon.glyphicon-envelope.form-control-feedback
+          .form-group.has-feedback
+            input.form-control(type='text', name="phone", id="phone", placeholder='Enter phone')
+            span.glyphicon.glyphicon-envelope.form-control-feedback
+          .form-group.has-feedback
+            input.form-control(type='password', name="password", id="password", placeholder='Password')
+            span.glyphicon.glyphicon-lock.form-control-feedback
+          .form-group.has-feedback
+            input.form-control(type='password', name="conf-password", id="conf-password", placeholder='Retype password')
+            span.glyphicon.glyphicon-log-in.form-control-feedback
+          .form-group
+            label
+              | User Type
+            select(id="user_type", name="user_type").form-control
+              option(value="2") Donar
+              option(value="3") Blood Seeker
+              span.glyphicon.glyphicon-log-in.form-control-feedback
+          .row
+            .col-xs-8
+              .checkbox.icheck
+                label
+                  input(type='checkbox')
+                  |  I agree to the 
+                  a(href='#') terms
+            .col-xs-4
+              button.btn.btn-primary.btn-block.btn-flat(type='submit') Register
+        a.text-center(href='/login') I already have a membership
+include layout/footer

@@ -1,0 +1,55 @@
+extends ../layout/base 
+block content 
+	section.content-header 
+	section.content
+		.box
+			.box-header.with-border
+				h3.box-title
+					| Edit Blood Type
+				.box-tools.pull-right
+					button(type='button', data-widget='collapse', data-toggle='tooltip',title='collapse').btn.btn-box-tool
+						i.fa.fa-minus
+					
+			.box-body
+				a(href='/bloodtype').pull-right.btn.btn-primary
+					| Back
+				br
+				br
+				form(role='form',method='post' action='/bloodtype/#{(id==undefined) ? data.id : id}/update')
+					.row
+						
+						.col-xs-6
+							.box-body
+								- if (messages.msg_error) 
+									.alert.alert-danger.alert-dismissable 
+										button.close(type='button', data-dismiss='alert', aria-hidden='true') 
+											| ×
+										h4
+											i.icon.fa.fa-ban
+											| Alert! 
+										| !{messages.msg_error}
+								- if (messages.msg_info) 
+									.alert.alert-success.alert-dismissable 
+										button.close(type='button', data-dismiss='alert', aria-hidden='true') 
+											| ×
+										h4
+											i.icon.fa.fa-ban
+											| Success! 
+										| !{messages.msg_info}
+								.form-group
+									label
+										| Name
+									input(type='text',value="#{data.name}",name='name',placeholder='Enter Name', autofocus).form-control
+								.form-group
+									label
+										| Type
+									input(type='text',value="#{ (blood_type == undefined) ? data.blood_type : blood_type }",name='blood_type',placeholder='Enter Blood Type').form-control
+								.form-group
+									label
+										| Quantity
+									input(type='number',value="#{ (quantity == undefined) ? data.quantity : quantity }",name='quantity',placeholder='Enter Quantity').form-control
+							.box-footer
+								input(type="hidden",name="_method", value="PUT")
+								button(type='submit').btn.btn-primary.pull-right
+									i.fa.fa-pencil 
+									|  Edit
